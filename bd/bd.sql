@@ -1,4 +1,5 @@
 create database bdt2castillo;
+use bdt2castillo;
 
 CREATE TABLE Autor
 (

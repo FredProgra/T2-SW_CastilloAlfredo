@@ -2,11 +2,12 @@ package edu.pe.cibertec.T2_SW_CastilloAlfredo.Service;
 
 import edu.pe.cibertec.T2_SW_CastilloAlfredo.Model.bd.Autor;
 import edu.pe.cibertec.T2_SW_CastilloAlfredo.Repository.AutorRepository;
+import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+@AllArgsConstructor
 @Service
 public class AutorService implements IAutorService{
     private AutorRepository autorRepository;
