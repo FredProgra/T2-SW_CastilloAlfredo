@@ -35,5 +35,22 @@ public class PublicacionController {
         return new ResponseEntity<>(publicacionService.agregarpublicaciom(publicacion),HttpStatus.OK);
     }
 
+    @PutMapping("/{id}")
+    public ResponseEntity<Publicacion> actualizarPublicacionResponse(
+            @PathVariable Integer id,
+            @RequestBody Publicacion publicacion
+    ){
+        Publicacion newpublicacion = publicacionService.publicacionxID(id).orElseThrow(() -> new ResourceNotFoundException("La publicaccion con Id "
+                        + id +" no existe"));
+        newpublicacion.setTitulo(publicacion.getTitulo());
+        newpublicacion.setResumen(publicacion.getResumen());
+        newpublicacion.setFechpublicacion(publicacion.getFechpublicacion());
+        newpublicacion.setIdautor(publicacion.getIdautor());
+
+
+        return new ResponseEntity<>(publicacionService.agregarpublicaciom(newpublicacion),
+                HttpStatus.OK);
+    }
+
 
 }

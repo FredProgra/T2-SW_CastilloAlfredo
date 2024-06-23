@@ -35,6 +35,22 @@ public class AutorController {
         return new ResponseEntity<>(autorService.agregarAutor(autor),HttpStatus.CREATED);
 
     }
+    @PutMapping("/{id}")
+    public ResponseEntity<Autor> actualizarAutorResponse(
+            @PathVariable Integer id,
+            @RequestBody Autor autor
+    ){
+        Autor newautor = autorService.buscarAutorXiD(id)
+                .orElseThrow(() -> new ResourceNotFoundException("El autor con Id "
+                        + id +" no existe"));
+        newautor.setNomautor(autor.getNomautor());
+        newautor.setApeautor(autor.getApeautor());
+        newautor.setFechnacautor(autor.getFechnacautor());
+
+        return new ResponseEntity<>(
+                autorService.agregarAutor(newautor),
+                HttpStatus.OK);
+    }
 
 
 }
