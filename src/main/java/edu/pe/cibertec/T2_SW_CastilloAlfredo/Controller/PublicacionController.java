@@ -1,18 +1,17 @@
 package edu.pe.cibertec.T2_SW_CastilloAlfredo.Controller;
 
 import edu.pe.cibertec.T2_SW_CastilloAlfredo.Exception.ResourceNotFoundException;
+import edu.pe.cibertec.T2_SW_CastilloAlfredo.Model.bd.Autor;
 import edu.pe.cibertec.T2_SW_CastilloAlfredo.Model.bd.Publicacion;
 import edu.pe.cibertec.T2_SW_CastilloAlfredo.Service.IPublicacionService;
+import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
 import java.util.List;
-
+@AllArgsConstructor
 @RestController
 @RequestMapping(path = "api/v1/publicacion")
 public class PublicacionController {
@@ -30,6 +29,10 @@ public class PublicacionController {
 
         );
         return  new ResponseEntity<>(idpublicacion,HttpStatus.OK);
+    }
+    @PostMapping("")
+    public ResponseEntity<Publicacion> agregarpublicacionResponse(@RequestBody Publicacion publicacion){
+        return new ResponseEntity<>(publicacionService.agregarpublicaciom(publicacion),HttpStatus.OK);
     }
 
 

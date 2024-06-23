@@ -36,8 +36,5 @@ public class AutorController {
 
     }
 
-    @PostMapping("")
-    public ResponseEntity<Autor> agregarautorResponse(@RequestBody Autor autor){
-        return new ResponseEntity<>(autorService.agregarAutor(autor),HttpStatus.OK);
-    }
+
 }
